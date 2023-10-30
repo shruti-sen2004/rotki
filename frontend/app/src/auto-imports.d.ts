@@ -305,6 +305,7 @@ declare global {
   const useAccountingApi: typeof import('./composables/api/settings/accounting-api')['useAccountingApi']
   const useAccountingRuleFilter: typeof import('./composables/filters/accounting-rule')['useAccountingRuleFilter']
   const useAccountingRuleForm: typeof import('./composables/settings/accounting/form')['useAccountingRuleForm']
+  const useAccountingRuleMappings: typeof import('./composables/settings/accounting/rule-mapping')['useAccountingRuleMappings']
   const useAccountingSettings: typeof import('./composables/settings/accounting/index')['useAccountingSettings']
   const useAccountingSettingsStore: typeof import('./store/settings/accounting')['useAccountingSettingsStore']
   const useActiveElement: typeof import('@vueuse/core')['useActiveElement']
@@ -341,6 +342,7 @@ declare global {
   const useAssetMovementFilters: typeof import('./composables/filters/asset-movement')['useAssetMovementFilters']
   const useAssetMovements: typeof import('./composables/history/asset-movements/index')['useAssetMovements']
   const useAssetMovementsApi: typeof import('./composables/api/history/asset-movements')['useAssetMovementsApi']
+  const useAssetPageNavigation: typeof import('./composables/assets/navigation')['useAssetPageNavigation']
   const useAssetPricesApi: typeof import('./composables/api/assets/prices')['useAssetPricesApi']
   const useAssets: typeof import('./composables/assets/index')['useAssets']
   const useAssetsApi: typeof import('./composables/api/assets/index')['useAssetsApi']
@@ -1019,6 +1021,7 @@ declare module 'vue' {
     readonly useAccountingApi: UnwrapRef<typeof import('./composables/api/settings/accounting-api')['useAccountingApi']>
     readonly useAccountingRuleFilter: UnwrapRef<typeof import('./composables/filters/accounting-rule')['useAccountingRuleFilter']>
     readonly useAccountingRuleForm: UnwrapRef<typeof import('./composables/settings/accounting/form')['useAccountingRuleForm']>
+    readonly useAccountingRuleMappings: UnwrapRef<typeof import('./composables/settings/accounting/rule-mapping')['useAccountingRuleMappings']>
     readonly useAccountingSettings: UnwrapRef<typeof import('./composables/settings/accounting/index')['useAccountingSettings']>
     readonly useAccountingSettingsStore: UnwrapRef<typeof import('./store/settings/accounting')['useAccountingSettingsStore']>
     readonly useActiveElement: UnwrapRef<typeof import('@vueuse/core')['useActiveElement']>
@@ -1055,6 +1058,7 @@ declare module 'vue' {
     readonly useAssetMovementFilters: UnwrapRef<typeof import('./composables/filters/asset-movement')['useAssetMovementFilters']>
     readonly useAssetMovements: UnwrapRef<typeof import('./composables/history/asset-movements/index')['useAssetMovements']>
     readonly useAssetMovementsApi: UnwrapRef<typeof import('./composables/api/history/asset-movements')['useAssetMovementsApi']>
+    readonly useAssetPageNavigation: UnwrapRef<typeof import('./composables/assets/navigation')['useAssetPageNavigation']>
     readonly useAssetPricesApi: UnwrapRef<typeof import('./composables/api/assets/prices')['useAssetPricesApi']>
     readonly useAssets: UnwrapRef<typeof import('./composables/assets/index')['useAssets']>
     readonly useAssetsApi: UnwrapRef<typeof import('./composables/api/assets/index')['useAssetsApi']>
@@ -1727,6 +1731,7 @@ declare module '@vue/runtime-core' {
     readonly useAccountingApi: UnwrapRef<typeof import('./composables/api/settings/accounting-api')['useAccountingApi']>
     readonly useAccountingRuleFilter: UnwrapRef<typeof import('./composables/filters/accounting-rule')['useAccountingRuleFilter']>
     readonly useAccountingRuleForm: UnwrapRef<typeof import('./composables/settings/accounting/form')['useAccountingRuleForm']>
+    readonly useAccountingRuleMappings: UnwrapRef<typeof import('./composables/settings/accounting/rule-mapping')['useAccountingRuleMappings']>
     readonly useAccountingSettings: UnwrapRef<typeof import('./composables/settings/accounting/index')['useAccountingSettings']>
     readonly useAccountingSettingsStore: UnwrapRef<typeof import('./store/settings/accounting')['useAccountingSettingsStore']>
     readonly useActiveElement: UnwrapRef<typeof import('@vueuse/core')['useActiveElement']>
@@ -1763,6 +1768,7 @@ declare module '@vue/runtime-core' {
     readonly useAssetMovementFilters: UnwrapRef<typeof import('./composables/filters/asset-movement')['useAssetMovementFilters']>
     readonly useAssetMovements: UnwrapRef<typeof import('./composables/history/asset-movements/index')['useAssetMovements']>
     readonly useAssetMovementsApi: UnwrapRef<typeof import('./composables/api/history/asset-movements')['useAssetMovementsApi']>
+    readonly useAssetPageNavigation: UnwrapRef<typeof import('./composables/assets/navigation')['useAssetPageNavigation']>
     readonly useAssetPricesApi: UnwrapRef<typeof import('./composables/api/assets/prices')['useAssetPricesApi']>
     readonly useAssets: UnwrapRef<typeof import('./composables/assets/index')['useAssets']>
     readonly useAssetsApi: UnwrapRef<typeof import('./composables/api/assets/index')['useAssetsApi']>

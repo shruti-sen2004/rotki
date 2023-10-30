@@ -716,6 +716,8 @@
     "useAccountingRuleForm": true,
     "useExternalApiKeys": true,
     "injectLocal": true,
-    "provideLocal": true
+    "provideLocal": true,
+    "useAssetPageNavigation": true,
+    "useAccountingRuleMappings": true
   }
 }

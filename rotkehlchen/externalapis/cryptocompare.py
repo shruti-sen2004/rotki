@@ -324,7 +324,7 @@ class Cryptocompare(ExternalServiceWithApiKey, HistoricalPriceOracleInterface, P
                     )
                     raise RemoteError(error_message)
 
-                return json_ret['Data'] if 'Data' in json_ret else json_ret
+                return json_ret.get('Data', json_ret)
             except KeyError as e:
                 raise RemoteError(
                     f'Unexpected format of Cryptocompare json_response. '
@@ -827,7 +827,7 @@ class Cryptocompare(ExternalServiceWithApiKey, HistoricalPriceOracleInterface, P
         coinlist_cache_path = os.path.join(self.data_directory, 'cryptocompare_coinlist.json')
         if os.path.isfile(coinlist_cache_path):
             log.info('Found cryptocompare coinlist cache', path=coinlist_cache_path)
-            with open(coinlist_cache_path) as f:
+            with open(coinlist_cache_path, encoding='utf8') as f:
                 try:
                     data = jsonloads_dict(f.read())
                     now = ts_now()
@@ -845,7 +845,7 @@ class Cryptocompare(ExternalServiceWithApiKey, HistoricalPriceOracleInterface, P
             data = self._api_query('all/coinlist')
 
             # Also save the cache
-            with open(coinlist_cache_path, 'w') as f:
+            with open(coinlist_cache_path, 'w', encoding='utf8') as f:
                 now = ts_now()
                 log.info('Writing coinlist cache', timestamp=now)
                 write_data = {'time': now, 'data': data}

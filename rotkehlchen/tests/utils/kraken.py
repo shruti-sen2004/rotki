@@ -496,7 +496,7 @@ class MockKraken(Kraken):
     def _load_results_from_file(filename: str) -> dict[str, Any]:
         dir_path = Path(__file__).resolve().parent.parent
         filepath = dir_path / 'data' / filename
-        with open(filepath) as f:
+        with open(filepath, encoding='utf8') as f:
             return jsonloads_dict(f.read())
 
     def online_api_query(self, method: str, req: Optional[dict] = None) -> dict:
@@ -544,7 +544,7 @@ class MockKraken(Kraken):
                 )
 
             # else use specific data
-            if ledger_type in ('deposit', 'withdrawal'):
+            if ledger_type in {'deposit', 'withdrawal'}:
                 data = json.loads(
                     KRAKEN_SPECIFIC_DEPOSITS_RESPONSE if ledger_type == 'deposit'
                     else KRAKEN_SPECIFIC_WITHDRAWALS_RESPONSE,

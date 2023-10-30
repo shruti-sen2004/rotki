@@ -200,7 +200,7 @@ class RotkiDataUpdater:
                     event_subtype=event_subtype,
                     counterparty=counterparty,
                     rule=rule,
-                    links={} if 'links' not in rule_data else rule_data['links'],
+                    links=rule_data.get('links', {}),
                 )
             except InputError as e:
                 # there is a conflict in the rule. Notify the frontend about it
@@ -317,6 +317,7 @@ class RotkiDataUpdater:
 
     def check_for_updates(self, updates: Sequence[UpdateType] = tuple(UpdateType)) -> None:
         """Retrieve the information about the latest available update"""
+        log.debug('Checking for remote updates')
         try:
             remote_information = self._get_remote_info_json()
         except RemoteError as e:
@@ -340,6 +341,7 @@ class RotkiDataUpdater:
                     )
 
                 # Update all remote data
+                log.debug(f'For {update_type=} we have {local_version=} and {latest_version=}')
                 if local_version < latest_version:
                     self.update_single(
                         update_type=update_type,

@@ -205,7 +205,7 @@ class Environment:
         return self.is_mac_runner() or os.environ.get('MACOS_BUILD_ARCH') == 'universal2'
 
     def is_x86_64(self) -> bool:
-        return self.arch in ['x86_64', 'AMD64']
+        return self.arch in {'x86_64', 'AMD64'}
 
     def backend_suffix(self) -> str:
         """
@@ -474,14 +474,14 @@ class MacPackaging:
 
         :param wheel_metadata: Path to the wheel metadata file
         """
-        with open(wheel_metadata) as file:
+        with open(wheel_metadata, encoding='utf8') as file:
             data = file.readlines()
             for (index, line) in enumerate(data):
                 if not line.startswith('Tag'):
                     continue
                 data[index] = line.replace('x86_64', 'universal2')
 
-        with open(wheel_metadata, 'w') as file:
+        with open(wheel_metadata, 'w', encoding='utf8') as file:
             file.writelines(data)
 
     def __download_patched_pip(self) -> Path:
@@ -509,7 +509,7 @@ class MacPackaging:
         """
         requirements = self.__storage.working_directory / 'requirements.txt'
         package_versions: dict[str, str] = {}
-        with open(requirements) as fp:
+        with open(requirements, encoding='utf8') as fp:
             while True:
                 line = fp.readline()
                 if not line:
@@ -1200,7 +1200,7 @@ class FrontendBuilder:
         os.chdir(frontend_build_dir)
         for path in frontend_build_dir.iterdir():
             name = path.name
-            if path.is_dir() or name in ['builder-debug.yml', 'builder-effective-config.yaml']:
+            if path.is_dir() or name in {'builder-debug.yml', 'builder-effective-config.yaml'}:
                 continue
 
             suffixes = ['dmg', 'zip', 'exe', 'AppImage', 'tar.xz', 'deb']
@@ -1267,12 +1267,12 @@ def main() -> None:
     if environment.is_windows():
         win = WindowsPackaging(storage, environment)
 
-    if args.build in ['backend', 'full']:
+    if args.build in {'backend', 'full'}:
         builder = BackendBuilder(storage, environment, mac, win)
         builder.clean()
         builder.build()
 
-    if args.build in ['full', 'frontend']:
+    if args.build in {'full', 'frontend'}:
         frontend_builder = FrontendBuilder(storage, environment, mac, win)
         frontend_builder.build()
 
